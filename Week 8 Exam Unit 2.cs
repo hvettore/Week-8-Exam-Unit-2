@@ -7,13 +7,11 @@ using static TaskFunctions;
 
 Console.Clear();
 Console.WriteLine("Starting Assignment 2");
-
-// Creating a variable for the HttpUtils so that we dont have to type HttpUtils.instance every time we want to use it
 HttpUtils httpUtils = HttpUtils.instance;
 
 //#### REGISTRATION
 Response setupReponse = SetupResponse();
-string taskID = "aAaa23"; // We get the taskID from the previous response and use it to get the task (look at the console output to find the taskID)
+string taskID = "aAaa23";
 
 //#### FIRST TASK 
 Response task1Response = TaskResponse(taskID);
@@ -30,7 +28,6 @@ string task1ResponseString = celsius.ToString("0.00");
 Console.WriteLine($"Temperature in Celsius: {Colors.Blue}{celsius}{ANSICodes.Reset}\n");
 Response task1SubmitResponse = SubmitReponse(taskID, task1ResponseString);
 Console.WriteLine($"Answer: {Colors.Green}{task1SubmitResponse}{ANSICodes.Reset}");
-
 TaskReponseChecker(task1SubmitResponse);
 
 //#### SECOND TASK 
@@ -79,7 +76,6 @@ task2Answer = string.Join(",", sortedNumbers);
 
 Response task2SubmitResponse = SubmitReponse(taskID, task2Answer);
 Console.WriteLine($"Answer: {Colors.Green}{task2SubmitResponse}{ANSICodes.Reset}");
-
 TaskReponseChecker(task2SubmitResponse);
 
 //#### THIRD TASK 
@@ -96,7 +92,6 @@ Console.WriteLine($"Sum of Numbers: {Colors.Magenta}{sum}{ANSICodes.Reset}\n");
 
 Response task3SubmitResponse = SubmitReponse(taskID, task3Answer);
 Console.WriteLine($"Answer: {Colors.Green}{task3SubmitResponse}{ANSICodes.Reset}");
-
 TaskReponseChecker(task3SubmitResponse);
 
 //#### FOURTH TASK 
@@ -108,7 +103,6 @@ Console.WriteLine($"Numbers in List: {Colors.Cyan}{task4?.parameters}{ANSICodes.
 
 string greekNumber = task4?.parameters ?? "";
 int task4Answer = 0;
-
 if (greekNumber != null)
 {
     foreach (char c in greekNumber)
@@ -136,11 +130,9 @@ if (greekNumber != null)
     }
 }
 
-Console.WriteLine($"Integer value of Greek number{Colors.Cyan} {greekNumber}: {task4Answer}{ANSICodes.Reset}\n");
-
+Console.WriteLine($"Integer Value of Greek number{Colors.Cyan} {greekNumber}: {task4Answer}{ANSICodes.Reset}\n");
 Response task4SubmitResponse = SubmitReponse(taskID, task4Answer.ToString());
 Console.WriteLine($"Answer: {Colors.Green}{task4SubmitResponse}{ANSICodes.Reset}");
-
 TaskReponseChecker(task4SubmitResponse);
 
 //#### ANSWER CHECKER

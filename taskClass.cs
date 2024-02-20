@@ -7,8 +7,4 @@ class Task
     public string? taskID { get; set; }
     public string? usierID { get; set; }
     public string? parameters { get; set; }
-
-
-
-    
 }
