@@ -1,0 +1,7 @@
+public class CalculationConstants
+{
+    public const int fahrenheitSubtraction = 32;
+    public const int fahrenheitMultiplication = 5;
+    public const int fahrenheitDivision = 9;
+
+}

@@ -4,6 +4,9 @@ using Colors = AnsiTools.ANSICodes.Colors;
 using static SetupVariables;
 using System.Text.Json;
 using static TaskFunctions;
+using System.Runtime.CompilerServices;
+using static CalculationConstants;
+;
 
 Console.Clear();
 Console.WriteLine("Starting Assignment 2");
@@ -21,7 +24,7 @@ Console.WriteLine($"Task #1: {Colors.Blue}{ANSICodes.Effects.Bold}{task1?.title}
 Console.WriteLine($"Fahrenheit to Convert: {Colors.Blue}{task1.parameters}{ANSICodes.Reset}");
 
 double fahrenheit = double.Parse(task1.parameters);
-double celsius = (fahrenheit - 32) * 5 / 9;
+double celsius = (fahrenheit - CalculationConstants.fahrenheitSubtraction) * 5 / 9;
 celsius = Math.Round(celsius, 2);
 string task1ResponseString = celsius.ToString("0.00");
 
