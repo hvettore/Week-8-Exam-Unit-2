@@ -11,8 +11,9 @@ public class TaskFunctions
     {
         return HttpUtils.instance.Get(SetupVariables.baseURL + SetupVariables.taskEndpoint + SetupVariables.myPersonalID + "/" + taskID).Result;
     }
-    public static Response SubmitReponse(string taskID, string response)
+    
+    public static Response SubmitReponse(string taskID, string answer)
     {
-        return HttpUtils.instance.Post(SetupVariables.baseURL + SetupVariables.taskEndpoint + SetupVariables.myPersonalID + "/" + taskID, response).Result;
+        return HttpUtils.instance.Post(SetupVariables.baseURL + SetupVariables.taskEndpoint + SetupVariables.myPersonalID + "/" + taskID, answer).Result;
     }
 }

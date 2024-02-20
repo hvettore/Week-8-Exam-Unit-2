@@ -25,8 +25,19 @@ if (task1Response.content != null)
 {
     task1 = JsonSerializer.Deserialize<Task>(task1Response.content);
 }
-Console.WriteLine($"Task #1: {Colors.Red}{ANSICodes.Effects.Bold}{task1?.title}{ANSICodes.Reset}\n{task1?.description}\n{ANSICodes.Reset}");
-Console.WriteLine($"Fahrenheit to Conver: {Colors.Red}{task1.parameters}{ANSICodes.Reset}");
+Console.WriteLine($"Task #1: {Colors.Blue}{ANSICodes.Effects.Bold}{task1?.title}{ANSICodes.Reset}\n{task1?.description}\n{ANSICodes.Reset}");
+Console.WriteLine($"Fahrenheit to Convert: {Colors.Blue}{task1.parameters}{ANSICodes.Reset}");
+
+double fahrenheit = double.Parse(task1.parameters);
+double celsius = (fahrenheit - 32) * 5 / 9;
+celsius = Math.Round(celsius, 2);
+string task1ResponseString = celsius.ToString();
+
+Console.WriteLine($"Temperature in Celsius: {Colors.Blue}{celsius}{ANSICodes.Reset}\n");
+Response task1SubmitResponse = SubmitReponse(taskID, task1ResponseString);
+Console.WriteLine($"Answer: {Colors.Green}{task1SubmitResponse}{ANSICodes.Reset}");
+
+TaskReponseChecker(task1SubmitResponse);
 
 
 
@@ -36,13 +47,15 @@ Console.WriteLine($"Fahrenheit to Conver: {Colors.Red}{task1.parameters}{ANSICod
 
 
 
-//#### TASK
 
-class Task
+static void TaskReponseChecker(Response taskSubmitResponse)
 {
-    public string? title { get; set; }
-    public string? description { get; set; }
-    public string? taskID { get; set; }
-    public string? usierID { get; set; }
-    public string? parameters { get; set; }
+    if (taskSubmitResponse.content.Contains("taskID"))
+    {
+        Console.WriteLine($"{Colors.Green}Task passed, no issue.{ANSICodes.Reset}");
+    }
+    else
+    {
+        Console.WriteLine($"{Colors.Red}Task failed, please try again.{ANSICodes.Reset}");
+    }
 }
