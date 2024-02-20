@@ -4,7 +4,7 @@ using Colors = AnsiTools.ANSICodes.Colors;
 using static SetupVariables;
 using System.Text.Json;
 using static TaskFunctions;
-//using static TaskCalculationConstants;
+using static CalculationConstants;
 
 Console.Clear();
 Console.WriteLine("Starting Assignment 2");
@@ -22,9 +22,9 @@ Console.WriteLine($"Task #1: {Colors.Blue}{ANSICodes.Effects.Bold}{task1?.title}
 Console.WriteLine($"Fahrenheit to Convert: {Colors.Blue}{task1.parameters}{ANSICodes.Reset}");
 
 double fahrenheit = double.Parse(task1.parameters);
-double celsius = (fahrenheit - 32) * 5 / 9;
+double celsius = (fahrenheit - fareheitSubtract) * fareheitMultiply / fareheitDivide;
 celsius = Math.Round(celsius, 2);
-string task1ResponseString = celsius.ToString("0.00");
+string task1ResponseString = celsius.ToString(celciusFormat);
 
 Console.WriteLine($"Temperature in Celsius: {Colors.Blue}{celsius}{ANSICodes.Reset}\n");
 Response task1SubmitResponse = SubmitReponse(taskID, task1ResponseString);
@@ -113,34 +113,34 @@ if (greekNumber != null)
         char c = greekNumber[i];
         switch (c)
         {
-            case 'I':
-                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == 'V' || greekNumber[i + 1] == 'X'))
+            case greekNumber1:
+                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == greekNumber5 || greekNumber[i + 1] == greekNumber10))
                 {
-                    task4Answer -= 1;
+                    task4Answer -= greekNumberCorrection1;
                 }
                 else
                 {
-                    task4Answer += 1;
+                    task4Answer += greekNumberCorrection1;
                 }
                 break;
-            case 'V':
-                task4Answer += 5;
+            case greekNumber5:
+                task4Answer += greekNumberCorrection5;
                 break;
-            case 'X':
-                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == 'L' || greekNumber[i + 1] == 'C'))
+            case greekNumber10:
+                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == greekNumber50 || greekNumber[i + 1] == greekNumber100))
                 {
-                    task4Answer -= 10;
+                    task4Answer -= greekNumberCorrection10;
                 }
                 else
                 {
-                    task4Answer += 10;
+                    task4Answer += greekNumberCorrection10;
                 }
                 break;
-            case 'L':
-                task4Answer += 50;
+            case greekNumber50:
+                task4Answer += greekNumberCorrection50;
                 break;
-            case 'C':
-                task4Answer += 100;
+            case greekNumber100:
+                task4Answer += greekNumberCorrection100;
                 break;
         }
     }
@@ -163,4 +163,3 @@ static void TaskReponseChecker(Response taskSubmitResponse)
         Console.WriteLine($"{Colors.Red}Task failed, please try again.{ANSICodes.Reset}");
     }
 }
-
