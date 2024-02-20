@@ -2,15 +2,10 @@
 using System.Text.Json;
 using AnsiTools;
 using Colors = AnsiTools.ANSICodes.Colors;
+using static Setup;
 
 Console.Clear();
 Console.WriteLine("Starting Assignment 2");
-
-// SETUP 
-const string myPersonalID = "ShhDonotTellAnyoneSpecialSecretNumberCombo";
-const string baseURL = "https://mm-203-module-2-server.onrender.com/";
-const string startEndpoint = "start/"; // baseURl + startEndpoint + myPersonalID
-const string taskEndpoint = "task/";   // baseURl + taskEndpoint + myPersonalID + "/" + taskID
 
 // Creating a variable for the HttpUtils so that we dont have to type HttpUtils.instance every time we want to use it
 HttpUtils httpUtils = HttpUtils.instance;
