@@ -41,7 +41,7 @@ Task? task2 = JsonSerializer.Deserialize<Task>(task2Response.content);
 Console.WriteLine($"\nTask #2: {Colors.Yellow}{ANSICodes.Effects.Bold}{task2?.title}{ANSICodes.Reset}\n{task2?.description}\n{ANSICodes.Reset}");
 Console.WriteLine($"Numbers in List: {Colors.Yellow}{task2.parameters}{ANSICodes.Reset}");
 
-int [] numberList = task2.parameters.Split(',').Select(int.Parse).ToArray();
+int[] numberList = task2.parameters.Split(',').Select(int.Parse).ToArray();
 string task2Answer = "";
 
 static bool isPrimeNumber(int number)
@@ -68,13 +68,22 @@ foreach (int number in numberList)
     }
 }
 
+task2Answer = task2Answer.TrimEnd(',');
 Console.WriteLine($"Prime Numbers In List: {Colors.Yellow}{task2Answer}{ANSICodes.Reset}\n");
+
+int[] sortedNumbers = task2Answer.Split(',')
+                                .Where(s => !string.IsNullOrWhiteSpace(s))
+                                .Select(int.Parse)
+                                .OrderBy(n => n)
+                                .ToArray();
+task2Answer = string.Join(",", sortedNumbers);
+
 Response task2SubmitResponse = SubmitReponse(taskID, task2Answer);
 Console.WriteLine($"Answer: {Colors.Green}{task2SubmitResponse}{ANSICodes.Reset}");
 
+TaskReponseChecker(task2SubmitResponse);
 
-
-
+//#### THIRD TASK 
 
 
 
