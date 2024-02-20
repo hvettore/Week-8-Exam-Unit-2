@@ -26,7 +26,7 @@ Console.WriteLine($"Fahrenheit to Convert: {Colors.Blue}{task1.parameters}{ANSIC
 double fahrenheit = double.Parse(task1.parameters);
 double celsius = (fahrenheit - 32) * 5 / 9;
 celsius = Math.Round(celsius, 2);
-string task1ResponseString = celsius.ToString();
+string task1ResponseString = celsius.ToString("0.00");
 
 Console.WriteLine($"Temperature in Celsius: {Colors.Blue}{celsius}{ANSICodes.Reset}\n");
 Response task1SubmitResponse = SubmitReponse(taskID, task1ResponseString);
@@ -84,6 +84,17 @@ Console.WriteLine($"Answer: {Colors.Green}{task2SubmitResponse}{ANSICodes.Reset}
 TaskReponseChecker(task2SubmitResponse);
 
 //#### THIRD TASK 
+taskID = "psu31_4";
+
+
+
+
+
+
+
+
+
+
 
 
 
