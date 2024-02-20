@@ -102,20 +102,47 @@ TaskReponseChecker(task3SubmitResponse);
 
 //#### FOURTH TASK 
 taskID = "rEu25ZX";
+Response task4Response = TaskResponse(taskID);
+Task? task4 = JsonSerializer.Deserialize<Task>(task4Response.content);
+Console.WriteLine($"\nTask #4: {Colors.Cyan}{ANSICodes.Effects.Bold}{task4?.title}{ANSICodes.Reset}\n{task4?.description}\n{ANSICodes.Reset}");
+Console.WriteLine($"Numbers in List: {Colors.Cyan}{task4.parameters}{ANSICodes.Reset}");
 
+string greekNumber = task4.parameters;
+int task4Answer = 0;
+Console.WriteLine($"Integer value: {Colors.Cyan}{task4Answer}{ANSICodes.Reset}\n");
 
+foreach (char c in greekNumber)
+{
+    switch (c)
+    {
+        case 'I':
+            task4Answer += 1;
+            break;
+        case 'V':
+            task4Answer += 5;
+            break;
+        case 'X':
+            task4Answer += 10;
+            break;
+        case 'L':
+            task4Answer += 50;
+            break;
+        case 'C':
+            task4Answer += 100;
+            break;
+        default:
+            break;
+    }
+}
 
+Console.WriteLine($"Integer value of Greek number{Colors.Cyan} {greekNumber}: {task4Answer}{ANSICodes.Reset}\n");
 
+Response task4SubmitResponse = SubmitReponse(taskID, task4Answer.ToString());
+Console.WriteLine($"Answer: {Colors.Green}{task4SubmitResponse}{ANSICodes.Reset}");
 
+TaskReponseChecker(task4SubmitResponse);
 
-
-
-
-
-
-
-
-
+//#### ANSWER CHECKER
 
 static void TaskReponseChecker(Response taskSubmitResponse)
 {
