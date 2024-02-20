@@ -99,6 +99,8 @@ TaskReponseChecker(task3SubmitResponse);
 taskID = "rEu25ZX";
 Response task4Response = TaskResponse(taskID);
 Task? task4 = JsonSerializer.Deserialize<Task>(task4Response.content);
+
+
 Console.WriteLine($"\nTask #4: {Colors.Cyan}{ANSICodes.Effects.Bold}{task4?.title}{ANSICodes.Reset}\n{task4?.description}\n{ANSICodes.Reset}");
 Console.WriteLine($"Numbers in List: {Colors.Cyan}{task4?.parameters}{ANSICodes.Reset}");
 
@@ -106,26 +108,39 @@ string greekNumber = task4?.parameters ?? "";
 int task4Answer = 0;
 if (greekNumber != null)
 {
-    foreach (char c in greekNumber)
+    for (int i = 0; i < greekNumber.Length; i++)
     {
+        char c = greekNumber[i];
         switch (c)
         {
             case 'I':
-                task4Answer += 1;
+                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == 'V' || greekNumber[i + 1] == 'X'))
+                {
+                    task4Answer -= 1;
+                }
+                else
+                {
+                    task4Answer += 1;
+                }
                 break;
             case 'V':
                 task4Answer += 5;
                 break;
             case 'X':
-                task4Answer += 10;
+                if (i < greekNumber.Length - 1 && (greekNumber[i + 1] == 'L' || greekNumber[i + 1] == 'C'))
+                {
+                    task4Answer -= 10;
+                }
+                else
+                {
+                    task4Answer += 10;
+                }
                 break;
             case 'L':
                 task4Answer += 50;
                 break;
             case 'C':
                 task4Answer += 100;
-                break;
-            default:
                 break;
         }
     }
