@@ -15,7 +15,6 @@ HttpUtils httpUtils = HttpUtils.instance;
 Response setupReponse = SetupResponse();
 string taskID = "aAaa23"; // We get the taskID from the previous response and use it to get the task (look at the console output to find the taskID)
 
-
 //#### FIRST TASK 
 Response task1Response = TaskResponse(taskID);
 
@@ -105,33 +104,35 @@ taskID = "rEu25ZX";
 Response task4Response = TaskResponse(taskID);
 Task? task4 = JsonSerializer.Deserialize<Task>(task4Response.content);
 Console.WriteLine($"\nTask #4: {Colors.Cyan}{ANSICodes.Effects.Bold}{task4?.title}{ANSICodes.Reset}\n{task4?.description}\n{ANSICodes.Reset}");
-Console.WriteLine($"Numbers in List: {Colors.Cyan}{task4.parameters}{ANSICodes.Reset}");
+Console.WriteLine($"Numbers in List: {Colors.Cyan}{task4?.parameters}{ANSICodes.Reset}");
 
-string greekNumber = task4.parameters;
+string greekNumber = task4?.parameters ?? "";
 int task4Answer = 0;
-Console.WriteLine($"Integer value: {Colors.Cyan}{task4Answer}{ANSICodes.Reset}\n");
 
-foreach (char c in greekNumber)
+if (greekNumber != null)
 {
-    switch (c)
+    foreach (char c in greekNumber)
     {
-        case 'I':
-            task4Answer += 1;
-            break;
-        case 'V':
-            task4Answer += 5;
-            break;
-        case 'X':
-            task4Answer += 10;
-            break;
-        case 'L':
-            task4Answer += 50;
-            break;
-        case 'C':
-            task4Answer += 100;
-            break;
-        default:
-            break;
+        switch (c)
+        {
+            case 'I':
+                task4Answer += 1;
+                break;
+            case 'V':
+                task4Answer += 5;
+                break;
+            case 'X':
+                task4Answer += 10;
+                break;
+            case 'L':
+                task4Answer += 50;
+                break;
+            case 'C':
+                task4Answer += 100;
+                break;
+            default:
+                break;
+        }
     }
 }
 
@@ -143,10 +144,9 @@ Console.WriteLine($"Answer: {Colors.Green}{task4SubmitResponse}{ANSICodes.Reset}
 TaskReponseChecker(task4SubmitResponse);
 
 //#### ANSWER CHECKER
-
 static void TaskReponseChecker(Response taskSubmitResponse)
 {
-    if (taskSubmitResponse.content.Contains("taskID"))
+    if (taskSubmitResponse?.content?.Contains("taskID") == true || taskSubmitResponse?.content?.Contains("Congratulations") == true)
     {
         Console.WriteLine($"{Colors.Green}Task passed, no issue.{ANSICodes.Reset}");
     }
