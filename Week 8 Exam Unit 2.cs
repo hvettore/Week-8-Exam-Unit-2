@@ -85,7 +85,10 @@ TaskReponseChecker(task2SubmitResponse);
 
 //#### THIRD TASK 
 taskID = "psu31_4";
-
+Response task3Response = TaskResponse(taskID);
+Task? task3 = JsonSerializer.Deserialize<Task>(task3Response.content);
+Console.WriteLine($"\nTask #3: {Colors.Magenta}{ANSICodes.Effects.Bold}{task3?.title}{ANSICodes.Reset}\n{task3?.description}\n{ANSICodes.Reset}");
+Console.WriteLine($"Numbers in List: {Colors.Magenta}{task3.parameters}{ANSICodes.Reset}");
 
 
 
