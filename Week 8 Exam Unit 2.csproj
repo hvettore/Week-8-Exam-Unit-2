@@ -8,4 +8,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="taskCalculationConstants.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="taskCalculationConstants.cs" />
+  </ItemGroup>
+
 </Project>
