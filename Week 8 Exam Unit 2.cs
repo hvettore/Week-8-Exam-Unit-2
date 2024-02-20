@@ -90,9 +90,18 @@ Task? task3 = JsonSerializer.Deserialize<Task>(task3Response.content);
 Console.WriteLine($"\nTask #3: {Colors.Magenta}{ANSICodes.Effects.Bold}{task3?.title}{ANSICodes.Reset}\n{task3?.description}\n{ANSICodes.Reset}");
 Console.WriteLine($"Numbers in List: {Colors.Magenta}{task3.parameters}{ANSICodes.Reset}");
 
+int[] numbers = task3.parameters.Split(',').Select(int.Parse).ToArray();
+int sum = numbers.Sum();
+string task3Answer = sum.ToString();
+Console.WriteLine($"Sum of Numbers: {Colors.Magenta}{sum}{ANSICodes.Reset}\n");
 
+Response task3SubmitResponse = SubmitReponse(taskID, task3Answer);
+Console.WriteLine($"Answer: {Colors.Green}{task3SubmitResponse}{ANSICodes.Reset}");
 
+TaskReponseChecker(task3SubmitResponse);
 
+//#### FOURTH TASK 
+taskID = "rEu25ZX";
 
 
 
